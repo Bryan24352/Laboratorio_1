@@ -1,20 +1,17 @@
-require('dotenv').config()
+const express = require ('express');
+const cors = require('cors');
 
-const Server = require('./models/server')
-const Server = new Server();
-
-const express = require('express')
-
-class  server{
+class Server{
     constructor(){
-        this.app = express()
-        this.app.get('/',function(req,res){
-            res.send('Hello world')
-    
-        })
-        this.app.liten(process.env.PORT)
-             console.log("El puerto esta corriendo el puerto TCP"+ process.env.PORT)
+        this.app =express()
+
+        this.app.use(cors());
+
+        this.app.use(cors());
+
+        this.app.use(express.json());
+
+        this.app.use(express.static('public'));
+        this.routes();
     }
 }
-
-module.exports = server
